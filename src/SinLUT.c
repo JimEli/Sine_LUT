@@ -13,6 +13,7 @@
  * Change Log:
  *   07/02/2017: Initial release. JME
  *************************************************************************/
+
 //#include "stdhdr.h" // Include to turn off assertions.
 #include <stdlib.h>
 #include <stdio.h>
@@ -51,6 +52,7 @@ const float fSine[ 90 ] = {
 //float lerp(float v0, float v1, float t) {
 //  return v0 + t * (v1 - v0);
 //}
+
 // Precise method, which guarantees v = v1 when t = 1.
 float lerp( float v0, float v1, float t ) {
   return (1 - t)*v0 + t*v1;
@@ -66,6 +68,7 @@ float Sine( int a ) {
 
 float f;
 float const two_right_angles = 180.0f;
+
 void SinAsm( float degree ) {
 	  // Convert angle from degrees to radians, then calculate sin value.
 	  __asm__ __volatile__ (
@@ -141,6 +144,7 @@ int main(void) {
     }
   }
   printf( "%f\n", f );
+
   // Calculate and display execution time.
   end = clock();
   cpu_time_used = ((double)(end - start))/CLOCKS_PER_SEC;
@@ -154,6 +158,7 @@ int main(void) {
     for ( int i=0; i<90; i++ )
         SinAsm( i );
   printf( "%f\n", f );
+  
   // Calculate and display execution time.
   end = clock();
   cpu_time_used = ((double)(end - start))/CLOCKS_PER_SEC;
@@ -168,6 +173,7 @@ int main(void) {
       //printf( "%d = %f\n", i, sin( i ) );
         f = sin( i );
   printf("%f\n", f); // Do something with f.
+  
   // Calculate and display execution time.
   end = clock();
   cpu_time_used = ((double)(end - start))/CLOCKS_PER_SEC;
